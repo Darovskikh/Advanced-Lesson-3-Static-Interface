@@ -35,9 +35,38 @@ namespace Advanced_Lesson_3_Static_Interface
         /// </summary>
         public static void AL3_P3_3()
         {
+            GuessType("Привет");
+            GuessType(123);
+            GuessType(-123);
+            GuessType(12.33223);
+            GuessType(DateTime.Now);
 
         }
 
+        public static void GuessType<T>(T item)
+        {
+            switch (item)
+            {
+                case string str:
+                    Console.WriteLine($"Вы передали строку {str.Length} символов");
+                    break;
+                case int i:
+                    if (i >= 0)
+                    {
+                        Console.WriteLine("Вы передали целое положительное число");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Вы передали целое отрицательное число");
+                    }
+                    break;
+                case double doub:
+                    string[] strings = doub.ToString().Split(',');
+                    Console.WriteLine($"Вы передали вещественное число с {strings[1].Length} значащими цифрами");
+                    break;
+                case DateTime date:
+                    Console.WriteLine("Вы передали время");
+                    break;
             }
         }
     }
